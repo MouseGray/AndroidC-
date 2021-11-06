@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>TranslatePage.qml</file>
+        <file>Dictionary.qml</file>
+        <file>BicolumnText.qml</file>
+        <file>utils.js</file>
+        <file>SwitchBar.qml</file>
+        <file>StateButton.qml</file>
+        <file>ConfirmDialog.qml</file>
+        <file>ErrorLabel.qml</file>
+        <file>android/Arrow.svg</file>
+    </qresource>
+    <qresource prefix="/images"/>
+    <qresource prefix="/images" lang="svg"/>
+</RCC>
