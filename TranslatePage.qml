@@ -196,8 +196,8 @@ Item {
         }
 
         onAccepted: {
-            database.clearBestTranslation(text_area_from.text, direction);
-            database.addTranslation(text_area_from.text, text_field.text, direction);
+            database.clearBestTranslation(text_area_from.text.toLowerCase(), direction);
+            database.addTranslation(text_area_from.text.toLowerCase(), text_field.text.toLowerCase(), direction);
 
             page.update();
         }
@@ -211,8 +211,8 @@ Item {
         text: "Лучший перевод?"
 
         onAccepted: {
-            database.clearBestTranslation(text_area_from.text, direction);
-            database.setBestTranslation(text_area_from.text, synonym, direction);
+            database.clearBestTranslation(text_area_from.text.toLowerCase(), direction);
+            database.setBestTranslation(text_area_from.text.toLowerCase(), synonym.toLowerCase(), direction);
 
             page.update();
         }

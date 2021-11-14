@@ -47,17 +47,19 @@ Item {
                 return;
             }
 
+            console.log(word);
             if (Utils.is_english_letter(word[0])) {
-                langs.leftColumn.text = 'Английский'
-                langs.rightColumn.text = 'Русский'
+                langs.leftColumn.text = 'Английский';
+                langs.rightColumn.text = 'Русский';
                 result = database.fetchWordPairs(word, Database.EnglishToRussian);
             }
             else {
-                langs.leftColumn.text = 'Русский'
-                langs.rightColumn.text = 'Английский'
+                langs.leftColumn.text = 'Русский';
+                langs.rightColumn.text = 'Английский';
                 result = database.fetchWordPairs(word, Database.RussianToEnglish);
             }
 
+            console.log(result);
             if (result.length === 0) {
                 empty_label.visible = true;
                 empty_label.height = 25;

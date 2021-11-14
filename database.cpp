@@ -66,7 +66,7 @@ QVector<QString> Database::fetchWordPairs(const QString& letters, Direction dir)
             "WHERE                  "
             "    word_%1 LIKE '%3%' "
             "    AND                "
-            "    best_%2 = true     "
+            "    best_%2 = 'true'   "
         }
                 .arg(Database::postfix_from_(dir))
                 .arg(Database::postfix_to_(dir))
@@ -123,7 +123,7 @@ void Database::clearBestTranslation(const QString& word, Direction dir)
                       "UPDATE                 "
                       "    \"EnglishRussian\" "
                       "SET                    "
-                      "    best_%1 = false    "
+                      "    best_%1 = 'false'  "
                       "WHERE                  "
                       "    word_%2 = :word    "
                   }
@@ -144,7 +144,7 @@ void Database::setBestTranslation(const QString& word_from, const QString& word_
                       "UPDATE                   "
                       "    \"EnglishRussian\"   "
                       "SET                      "
-                      "    best_%1 = true       "
+                      "    best_%1 = 'true'     "
                       "WHERE                    "
                       "    word_%1 = :word_to   "
                       "    AND                  "
@@ -158,6 +158,8 @@ void Database::setBestTranslation(const QString& word_from, const QString& word_
     if (!query.exec()) {
         runtimeError("SQL error: " + query.lastError().text());
     }
+
+    qDebug() << query.numRowsAffected();
 }
 
 void Database::addTranslation(const QString& word_from, const QString& word_to, Direction dir)
@@ -174,8 +176,8 @@ void Database::addTranslation(const QString& word_from, const QString& word_to, 
                       "VALUES(                  "
                       "    :word_to,            "
                       "    :word_from,          "
-                      "    true,                "
-                      "    true                 "
+                      "    'true',              "
+                      "    'true'               "
                       ")                        "
                   }
                   .arg(Database::postfix_to_(dir))
